@@ -1,0 +1,26 @@
+{
+  "name": "url_shortner",
+  "version": "1.0.0",
+  "description": "This service shortens long urls into short urls",
+  "main": "dist/index.js",
+  "repository": "https://github.com/Anushil98/url_shortner.git",
+  "author": "Anushil",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon -e ts,js -r dotenv/config --watch ./src src/index.ts",
+    "build": "rimraf dist && tsc",
+    "start": "yarn build && node -r dotenv/config dist/index.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.12.0",
+    "nodemon": "^3.1.9",
+    "rimraf": "4.4.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.3"
+  }
+}
