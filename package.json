@@ -9,11 +9,18 @@
   "scripts": {
     "dev": "nodemon -e ts,js -r dotenv/config --watch ./src src/index.ts",
     "build": "rimraf dist && tsc",
-    "start": "yarn build && node -r dotenv/config dist/index.js"
+    "start": "yarn build && node -r dotenv/config dist/index.js",
+    "typeorm": "ts-node -r dotenv/config  ./node_modules/typeorm/cli --dataSource src/infrastructure/_config/postgresDB/maindatasource.ts",
+    "typeorm:migrate": "yarn typeorm migration:run",
+    "typeorm:generate": "node -e \"const name = process.argv[1];console.log('FileName: ',name); if (!name) { console.error('Please provide a name.'); process.exit(1); } else { require('child_process').execSync('yarn typeorm migration:generate src/infrastructure/_config/postgresDB/migration/'+name, {stdio: 'inherit'}); }\"",
+    "typeorm:revert": "yarn typeorm migration:revert"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "express": "^4.21.2",
+    "pg": "^8.13.1",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",

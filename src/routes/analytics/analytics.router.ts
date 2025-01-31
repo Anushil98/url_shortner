@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { AnalyticsController } from "../../controller/analytics/heartbeat.controller";
-import { AnalyticsRepositories } from "../../repositories/analytics/analytics.repositories";
+import { AnalyticsRepositories } from "../../infrastructure/analytics/analytics.repositories";
 
 export class AnalyticsRouter {
   private static router: Router = Router();

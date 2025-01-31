@@ -1,5 +1,5 @@
 import { NextFunction, Request, Response } from "express";
-import { AnalyticsRepositories } from "../../repositories/analytics/analytics.repositories";
+import { AnalyticsRepositories } from "../../infrastructure/analytics/analytics.repositories";
 
 export class AnalyticsController {
   constructor(private readonly analyticsrepository: AnalyticsRepositories) {}
