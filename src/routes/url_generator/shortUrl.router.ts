@@ -2,7 +2,7 @@ import { Router } from "express";
 import { shortUrlRepository } from "../../infrastructure/short_url/repository/shortUrl.repository";
 import { shortURL } from "../../infrastructure/short_url/entities/shortUrl.entity";
 import appDataSource from "../../infrastructure/_config/postgresDB/maindatasource";
-import { ShortUrlController } from "../../controller/short_url/shor_url.controller";
+import { ShortUrlController } from "../../controller/short_url/short_url.controller";
 
 export class shortUrlRouter {
   private static router: Router = Router();
