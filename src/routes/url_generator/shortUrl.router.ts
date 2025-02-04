@@ -11,6 +11,8 @@ export class shortUrlRouter {
     const shortUrlRepo = new shortUrlRepository(appDataSource, shortURL);
     const controller = new ShortUrlController(shortUrlRepo);
     this.router.post("/generateShortUrl", controller.addShortUrl);
+    this.router.get("/:shortUrl", controller.getLongUrl);
+
     return this.router;
   }
 }

@@ -8,12 +8,32 @@ export class ShortUrlController {
     try {
       const { longUrl } = req.body;
       // short url generator
-      const generatedShortUrl = longUrl;
+      const generatedShortUrl = await this.shortUrlRepository.generateUrl(
+        longUrl
+      );
       const savedUrl = await this.shortUrlRepository.addShortUrl(
         longUrl,
         generatedShortUrl
       );
       res.status(200).json({ shortUrl: savedUrl.shortUrl });
+      return;
+    } catch (err) {
+      console.error(err);
+      res.status(500).send("Internal Server Error!");
+      return;
+    }
+  };
+
+  getLongUrl = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { shortUrl } = req.params;
+
+      const longUrl = await this.shortUrlRepository.getLongUrl(shortUrl);
+      if (longUrl === undefined) {
+        res.status(404).send("Url Not found");
+        return;
+      }
+      res.redirect(longUrl);
       return;
     } catch (err) {
       console.error(err);
